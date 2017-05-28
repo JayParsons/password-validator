@@ -17,6 +17,9 @@ public class MainActivity extends AppCompatActivity {
     public static boolean validate(String p) {
         boolean result1;
         boolean result2;
+        boolean result3;
+        boolean result4;
+        boolean result5;
 
         //test if password matches the word 'password' disregarding case
         if (p.equalsIgnoreCase("password"))
@@ -30,8 +33,49 @@ public class MainActivity extends AppCompatActivity {
         else
             result2 = true;
 
-        //return true if result1 and result2 are both true. Return false if otherwise
-        if (result1 && result2)
+        //test if password contains at least one number
+        result3 = false;
+        for (int i = 0; i <= 9; i++) {
+            for (int j = 0; j < p.length(); j++) {
+                if (p.charAt(j) == i+48)
+                    result3 = true;
+            }
+        }
+
+        //test if password contains a special character from ASCII character set (33-47)
+        result4 = false;
+        for (int i = 33; i <= 47; i++) {
+            for (int j = 0; j < p.length(); j++) {
+                if (p.charAt(j) == i)
+                    result4 = true;
+            }
+        }
+
+        //test if password contains at least one lower case and one upper case character
+        boolean check1 = false;
+        boolean check2 = false;
+
+        for (int i = 65; i <= 90; i++) {
+            for(int j = 0; j < p.length(); j++) {
+                if (p.charAt(j) == i)
+                    check1 = true;
+            }
+        }
+
+        for (int i = 97; i <= 122; i++) {
+            for(int j = 0; j < p.length(); j++) {
+                if (p.charAt(j) == i)
+                    check2 = true;
+            }
+        }
+
+        if (check1 && check2)
+            result5 = true;
+        else
+            result5 = false;
+
+        //return true if results of all tests are true. Return false if otherwise
+        if (result1 && result2 && result3 && result4 && result5)
             return true;
         else
             return false;

@@ -20,8 +20,11 @@ public class ValidateTest {
         assertEquals(MainActivity.validate("password"), false);
         assertEquals(MainActivity.validate("PASSWORD"), false);
         assertEquals(MainActivity.validate("PaSsWoRd"), false);
-        assertEquals(MainActivity.validate("password1"), true);
         assertEquals(MainActivity.validate("pass"), false);
-        assertEquals(MainActivity.validate("ThisIsAPassword"), true);
+        assertEquals(MainActivity.validate("ThisIsAPassword1"), false);
+        assertEquals(MainActivity.validate("ThisIsAPassword!"), false);
+        assertEquals(MainActivity.validate("PaSsS1!"), false);
+        assertEquals(MainActivity.validate("PaSssS1!"), true);
+
     }
 }
